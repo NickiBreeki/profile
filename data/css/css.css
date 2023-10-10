@@ -1,0 +1,333 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --bg-color: #0c151d;
+    --text-color: #fff;
+    --main-color: #ff71aa;
+    --focus-color: #ff93be;
+    --linked-color: #fffc5c;
+    --other-color: #a3abb2;
+    --second-color: #171f26;
+
+    --h1-font: 42px;
+}
+
+body {
+    overflow: auto;
+
+    color: var(--text-color);
+    background: var(--bg-color);
+
+    background-size: cover;
+}
+
+header {
+    font-family: 'Bebas Neue', sans-serif;
+
+    width: 100%;
+    height: 60px;
+    background: var(--second-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+}
+
+.Home {
+    display: block;
+}
+
+.Contributes {
+    display: none;
+}
+
+.Logo {
+    font-size: 24px;
+    color: var(--text-color);
+}
+
+.Logo_bracket {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.Hamburger {
+    display: none;
+}
+
+.Navbar ul {
+    display: flex;
+}
+
+.Navbar ul li a {
+    display: block;
+    color: var(--text-color);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    font-size: 15px;
+    padding: 7px 25px;
+    border-radius: 10px;
+    transition: all ease .2s;
+    margin: 0 8px;
+}
+
+.Icons i {
+    height: 40px;
+    width: 40px;
+
+    background: var(--second-color);
+    color: var(--other-color);
+    font-size: 26px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all ease .55s;
+}
+
+.AboutMe {
+    margin: 1rem -7rem;
+    
+    padding: 20px;
+    width: 150%;
+
+    border-radius: 10px;
+    background: var(--second-color);
+}
+
+.AboutMe p {
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: none;
+    color: var(--text-color);
+}
+.AboutMe a {
+    color: var(--linked-color);
+    font-weight: bold;
+    
+}
+
+section {
+    padding: 60px 34%;
+}
+
+.all {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.Box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.Profile img {
+    max-width: 100%; /* Set a minimum width for the image */
+    height: auto;
+    min-width: 100px; /* Set a minimum width for the image */
+
+    box-shadow: 0px 0px 13px var(--focus-color);
+
+    outline: 4px solid var(--focus-color);
+    border-radius: 100%;
+}
+
+.Profile-Description h1 {
+    font-size: var(--h1-font);
+    font-weight: 600;
+    line-height: 1;
+}
+
+.Profile-Description h6 {
+    margin: 5px 0;
+    width: 20rem;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--other-color);
+}
+
+.Social i {
+    display: inline-block;
+    font-size: 25px;
+    color: var(--other-color);
+    margin-right: 15px;
+    transition: all ease .55s;
+}
+
+.Row {
+    padding: 20px;
+    width: 125%;
+
+    margin-top: 1rem;
+    margin-left: -3rem;
+
+    border-radius: 10px;
+
+    background: var(--second-color);
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    gap: 1rem;
+}
+
+.TotalExperience {
+    color: var(--text-color);
+}
+
+.Row-Content p {
+    font-size: 15px;
+    color: var(--other-color);
+}
+
+.Row-Content-Number {
+    font-size: 30px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.CELabel {
+    margin-top: 2rem;
+    background-color: var(--second-color);
+    color: var(--other-color);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.CELabel h3 {
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+
+
+.Social i:hover {
+    transform: scale(1.08) translateY(-4px);
+    color: var(--text-color);
+}
+
+.Navbar ul li a:hover {
+    transform: scale(1.08);
+    color: var(--text-color);
+    background: var(--main-color);
+    box-shadow: 0px 0px 3px var(--focus-color);
+    text-shadow: 0px 0px 4px var(--bg-color);
+}
+
+.Navbar ul li a.Active {
+    transform: scale(1.08);
+    color: var(--text-color);
+    text-shadow: 0px 0px 12px var(--bg-color);
+    font-weight: bold;
+    background: var(--focus-color);
+    box-shadow: 0px 0px 3px var(--main-color);
+}
+
+@media only screen and (max-width: 1320px) {
+    header {
+        padding: 0 50px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    header {
+        padding: 0 30px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .Hamburger {
+        display: block;
+        cursor: pointer;
+    }
+
+    .Hamburger .Line {
+        width: 30px;
+        height: 3px;
+        background: var(--text-color);
+        margin: 6px 0;
+    }
+
+    .Profile img {
+        max-width: 100%; /* Allow the image to shrink as the container gets smaller */
+        height: auto; /* Maintain the aspect ratio of the image */
+        min-width: 100px; /* Set a minimum width for the image */
+    }
+    
+    section {
+        padding: 60px 10%;
+    }
+
+    .Navbar {
+        position: absolute;
+        overflow: hidden;
+
+        top: 50px;
+        left: 0;
+        right: 0;
+
+        width: 100vw;
+        height: 0;
+
+        background: rgba(23, 31, 38, 0.8);
+
+        transition: 0.2s;
+    }
+
+    .AboutMe {
+        width: 90%;   
+        margin-left: 0rem;
+
+    }
+
+    .Row {
+        margin-left: 0rem;
+        width: 90%;
+        margin-top: 3rem;
+        display:list-item;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .Navbar ul {
+        display: block;
+        width: fit-content;
+        margin: 80px auto 0 auto;
+        text-align: center;
+        opacity: 0;
+        width: 100%;
+
+        transition: 0.5s;
+    }
+
+    .Navbar ul li a {
+        margin-bottom: 12px;
+    }
+
+    .Navbar.Active {
+        height: 300px;
+    }
+
+    .Navbar.Active ul {
+        opacity: 1;
+    }
+}
