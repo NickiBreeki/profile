@@ -55,6 +55,10 @@ header {
     display: none;
 }
 
+.OpenSource {
+    display: none;
+}
+
 .Logo {
     font-size: 24px;
     color: var(--text-color);
