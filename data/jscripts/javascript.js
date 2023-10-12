@@ -1,37 +1,36 @@
 const thumbnailImg = document.getElementById('avatarImg');
-
 const MawProfileEndPoint = 'https://thumbnails.roproxy.com/v1/users/avatar-headshot?userIds=61479864&size=420x420&format=Png&isCircular=true';
-
 const ValueDisplays = document.querySelectorAll(".Row-Content-Number");
+const SkillProgressions = document.querySelectorAll('.Skill-Progression');
 const TotalPlaceVisit = document.querySelectorAll(".Row-Content-Number")[2];
-
 const Hamburger = document.querySelector(".Hamburger");
 const Navbar = document.querySelector(".Navbar");
 
 const ContributeExperiences = [3297964905, 6853377206, 2321907138, 4747388345, 10205046075];
 
 let PlaceVisit = 0;
+let CurrentTick = performance.now();
 
 Hamburger.onclick = function() {
-    Navbar.classList.toggle("Active")    
-}
+    Navbar.classList.toggle("Active");
+};
 
 function lerp(start, end, t) {
-    return (1 - t) * start + t * end
-}  
+    return (1 - t) * start + t * end;
+}
 
 async function FetchPlaceVisit(PlaceId) {
     try {
         const response = await fetch(`https://apis.roproxy.com/universes/v1/places/${PlaceId}/universe`);
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('FAILED TO GET UNIVERSE: Network response was not ok');
         }
         const data = await response.json();
         const UniverseId = data.universeId;
 
         const placedataResponse = await fetch(`https://games.roproxy.com/v1/games?universeIds=${UniverseId}`);
         if (!placedataResponse.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('FAILED TO GET UNIVERSE DETAILS: Network response was not ok');
         }
         const placedata = await placedataResponse.json();
         const actualdata = placedata.data[0];
@@ -46,7 +45,9 @@ async function FetchPlaceVisit(PlaceId) {
 
 async function calculatePlaceVisits() {
     for (const value of ContributeExperiences) {
+        const newtick = (CurrentTick - performance.now());
         PlaceVisit += await FetchPlaceVisit(value);
+        CurrentTick += newtick;
     }
 }
 
@@ -55,39 +56,65 @@ fetch(MawProfileEndPoint)
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        
         return response.json();
     })
-    
     .then(data => {
-        const actualdata = data.data[0]
+        const actualdata = data.data[0];
         const imageUrl = actualdata.imageUrl;
-
         thumbnailImg.src = imageUrl;
     })
-    
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
     });
 
-
 ValueDisplays.forEach((ValueDisplay) => {
-    ValueDisplay.textContent = "Awaiting"
-})
-     
-calculatePlaceVisits();
-setTimeout(() => {
-    document.querySelector(".TotalExperience").textContent = ContributeExperiences.length;
+    ValueDisplay.textContent = "Awaiting";
+});
+
+SkillProgressions.forEach((SkillProgression) => {
+    SkillProgression.style.setProperty('--progress-percentage', SkillProgression.getAttribute("per"));
+});
+
+document.querySelectorAll(".Navbar a").forEach((aElement) => {
+    const id = aElement.id;
+    const element = document.getElementById(id);
+
+    element.onclick = function() {
+        NavBarFocus(id)
+    };
+});
+
+function NavBarFocus(ButtonId) {
+    document.querySelectorAll(".Navbar a").forEach((aElement) => {
+        const id = aElement.id;
+        const element = document.getElementById(id);
+
+        if (id === ButtonId) {
+            element.classList.add("Active");
+            document.querySelector("." + id).style.display = "block"
+        } else {
+            element.classList.remove("Active");
+            document.querySelector("." + id).style.display = "none"
+        }
+    });
+}
+
+document.querySelector(".TotalExperience").textContent = ContributeExperiences.length;
+
+async function updatePlaceVisits() {
+    await calculatePlaceVisits();
+
     TotalPlaceVisit.setAttribute("data-val", PlaceVisit);
-    ValueDisplays.forEach((ValueDisplay) => {
+
+    for (const ValueDisplay of ValueDisplays) {
         let Init = 0;
         let EndVal = parseInt(ValueDisplay.getAttribute("data-val"));
         let t = 0;
         let duration = 100; // Duration in milliseconds
-        
+
         function updateValue() {
             t += 0.01; // You can adjust the step size as needed
-            
+
             if (t <= 1) {
                 let Value = Math.round(lerp(Init, EndVal, t));
                 ValueDisplay.textContent = Value.toLocaleString();
@@ -96,15 +123,9 @@ setTimeout(() => {
                 ValueDisplay.textContent = EndVal.toLocaleString();
             }
         }
-        
-        updateValue();
 
-        /*let Counter = setInterval(function() {
-            Init += 1;
-            ValueDisplays.textContent = Init.toLocaleString();
-            if (Init == EndVal) {
-                clearInterval(Counter);
-            }
-        }, Duration)*/
-    })
-}, 10000)
+        updateValue();
+    }
+}
+
+updatePlaceVisits();
