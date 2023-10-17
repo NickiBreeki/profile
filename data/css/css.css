@@ -9,6 +9,25 @@
     font-family: 'Poppins', sans-serif;
 }
 
+video::-webkit-media-controls-container {
+    opacity: 0 !important;
+}
+  
+*::-webkit-media-controls-panel {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+*::--webkit-media-controls-play-button {
+    display: none!important;
+    -webkit-appearance: none;
+}
+
+*::-webkit-media-controls-start-playback-button {
+    display: none!important;
+    -webkit-appearance: none;
+}
+
 :root {
     --bg-color: #0c151d;
     --text-color: #fff;
@@ -41,22 +60,6 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 100px;
-}
-
-.Home {
-    display: block;
-}
-
-.Pricing {
-    display: none;
-}
-
-.Contributes {
-    display: none;
-}
-
-.OpenSource {
-    display: none;
 }
 
 .Logo {
@@ -113,7 +116,7 @@ header {
     background: var(--second-color);
 }
 
-.Pricing .AboutMe {
+#Pricing-Content .AboutMe {
     margin: 1rem -50%;
     
     padding: 20px;
@@ -123,8 +126,49 @@ header {
     background: var(--second-color);
 }
 
-.Pricing .AboutMe .warning {
-    color: hwb(356 25% 0%);
+.warning_highlight {
+    padding: 1px;
+    border-radius: 4px;
+    
+    text-transform: uppercase;
+    outline: 1px solid hwb(356 31% 2%);
+
+    color: hwb(356 31% 2%);
+    background-color: hwb(356 25% 0% / 0.142);
+}
+
+.warning {
+    color: hwb(356 31% 2%);
+}
+
+.yellow_highlight {
+    padding: 1px;
+    border-radius: 4px;
+    
+    text-transform: uppercase;
+    outline: 1px solid hwb(76 31% 2%);
+
+    color: hwb(76 31% 2%);
+    background-color: hwb(76 31% 2% / 0.142);
+}
+
+.yellow {
+    color: hwb(356 31% 2%);
+}
+
+.information_highlight {
+    padding: 1px;
+    border-radius: 4px;
+    
+    text-transform: uppercase;
+    outline: 1px solid hwb(231 25% 2%);
+
+    color: hwb(231 25% 2%);
+    background-color: hwb(231 25% 0% / 0.142);
+}
+
+.information {
+    color: hwb(231 25% 2%);
 }
 
 .Skill {
@@ -142,6 +186,10 @@ header {
 
     border-radius: 10px;
     background: var(--second-color);
+}
+
+.Past-Work video {
+    width: 30%;
 }
 
 .Skill-Name {
@@ -190,7 +238,7 @@ header {
     color: var(--text-color);
 }
 
-.Pricing .AboutMe p {
+#Pricing-Content .AboutMe p {
     font-size: 16px;
     font-weight: normal;
     text-decoration: none;
@@ -198,13 +246,132 @@ header {
     color: var(--text-color);
 }
 
-.Home .AboutMe a {
+#Home-Content .AboutMe a {
     color: var(--linked-color);
     font-weight: bold;  
 }
 
-section {
+#Home-Content section {
     padding: 60px 34%;
+}
+
+#Pricing-Content section {
+    padding: 60px 34%;
+}
+
+/*
+*/
+#Contributes-Content .Content {
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+#Contributes-Content .Card {
+    background-color: var(--second-color);
+
+    width: 600px;
+    height: 540px;
+    margin: 10px;
+
+    border-radius: 10px;
+
+    transition: all ease .55s;
+}
+
+#Contributes-Content .Card:hover {
+    transform: scale(1.03) translateY(10px);
+    outline: 4px solid #93ceff2d;
+}
+
+#Contributes-Content .Card-Thumbnail {
+    background-color: var(--focus-color);
+
+    height: 200px;
+    margin-bottom: 10px;
+
+    background-size: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+#Contributes-Content h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#Contributes-Content p {
+    padding: 10px;
+    font-size: 13px;
+}
+
+/*
+*/
+#OpenSource-Content .Content {
+    justify-content: center;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+#OpenSource-Content .Card {
+    background-color: var(--second-color);
+
+    width: 400px;
+    height: 650px;
+    margin: 10px;
+
+    border-radius: 10px;
+
+    transition: all ease .55s;
+}
+
+#OpenSource-Content .Card:hover {
+    transform: scale(1.03) translateY(10px);
+    outline: 4px solid #93ceff2d;
+}
+
+#OpenSource-Content .Card-Thumbnail {
+    background-color: var(--focus-color);
+
+    height: 200px;
+    margin-bottom: 10px;
+
+    background-size: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+#OpenSource-Content h1 {
+    font-size: 30px;
+    text-align: center;
+}
+
+#OpenSource-Content p {
+    padding: 10px;
+    font-size: 13px;
+}
+
+#Contributes-Content .game1 {
+    background-image: url("https://tr.rbxcdn.com/03d03008b60f17d19ec1b24995e33bcb/768/432/Image/Png");
+}
+#Contributes-Content .game2 {
+    background-image: url("https://tr.rbxcdn.com/7c314faaded6b8a52ff842e27a7861f9/768/432/Image/Png");
+}
+#Contributes-Content .game3 {
+    background-image: url("https://tr.rbxcdn.com/fb59243a06c95be76d3045b58a5a6d72/768/432/Image/Png");
+}
+#Contributes-Content .game4 {
+    background-image: url("https://tr.rbxcdn.com/1bf353c5d9c098f65f98c4f8ce8ab984/768/432/Image/Png");
+}
+#Contributes-Content .game5 {
+    background-image: url("https://tr.rbxcdn.com/cbb54741809dd977694eb3f08f7fb5a9/768/432/Image/Png");
+}
+#OpenSource-Content .asset1 {
+    background-image: url("https://resource-nickibreeki.carrd.co/assets/images/image04.gif?v=746b1530");
+    background-position: 0px -100px;
+}
+
+#OpenSource-Content .asset2 {
+    background-image: url("https://resource-nickibreeki.carrd.co/assets/images/image01.jpg?v=746b1530");
+    background-position: 0px -100px;
 }
 
 .all {
@@ -325,75 +492,65 @@ section {
 }
 
 /* BUTTON */
-.Pricing .button {
-    display: inline-flex;
-    scale: 1.25;
-    height: 40px;
-    width: 150px;
-    border: 2px solid #BFC0C0;
-    margin: 20px 20px 20px 0;
-    color: #BFC0C0;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: .8em;
-    letter-spacing: 1.5px;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  
-  a {
-    color: #BFC0C0;
-    text-decoration: none;
-    letter-spacing: 1px;
-  }
+#Contributes-Content a {
+    color: var(--text-color);
+    outline: 2px solid var(--text-color);
+    border-radius: 5px;
+    padding: 5px;
 
-#button-6 {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
-  #button-6 a {
-    position: relative;
-    transition: all .45s ease-Out;
-  }
-  
-  #spin {
-    width: 0;
-    height: 0;
-    opacity: 0;
-    left: 70px;
-    top: 20px;
-    transform: rotate(0deg);
-    background: none;
-    position: absolute;
-    transition: all .5s ease-Out;
-  }
-  
-  #button-6:hover #spin {
-    width: 200%;
-    height: 500%;
-    opacity: 1;
-    left: -70px;
-    top: -70px;
-    background: #BFC0C0;
-    transform: rotate(80deg);
-  }
-  
-  #button-6:hover a {
-    color: #2D3142;
-  }
-  
+    display: block;
+    text-align: center;
+    margin: 20px 50px;
 
-@keyframes FillProgression {
-    from {
-        width: 0;
-    }
+    transition: all ease .55s;
+}
 
-    to {
-        width: 100%;
-    }
+#Contributes-Content a:hover {
+    transform: scale(1.1);
+    
+    background: var(--text-color);
+    color: var(--second-color);
+}
+
+
+#OpenSource-Content a {
+    color: var(--text-color);
+    outline: 2px solid var(--text-color);
+    border-radius: 5px;
+    padding: 5px;
+
+    display: block;
+    text-align: center;
+    margin: 20px 50px;
+
+    transition: all ease .55s;
+}
+
+#OpenSource-Content a:hover {
+    transform: scale(1.1);
+    
+    background: var(--text-color);
+    color: var(--second-color);
+}
+
+#Pricing-Content a:hover {
+    transform: scale(1.1);
+    
+    background: var(--text-color);
+    color: var(--second-color);
+}
+  
+#Pricing-Content a {
+    color: var(--text-color);
+    outline: 2px solid var(--text-color);
+    border-radius: 5px;
+    padding: 5px;
+
+    display: block;
+    text-align: center;
+    margin: 20px 50px;
+
+    transition: all ease .55s;
 }
 
 @media only screen and (max-width: 1320px) {
@@ -451,6 +608,16 @@ section {
         width: 90%;   
         margin-left: 0rem;
 
+    }
+
+    .Past-Work {
+        width: 90%;   
+        margin-left: 0rem;
+
+    }
+
+    .Past-Work video {
+        width: 28%;
     }
 
     .Row {
